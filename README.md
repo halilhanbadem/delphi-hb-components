@@ -134,3 +134,10 @@ _Update List_
 * Fixed MemoryLeak Error.
 * Fixed some issues for HTML-based submissions.
 * Minor code changes have been made.
+
+
+## For Collaborations
+ - halilhanbadem.dev
+ - me@halilhanbadem.dev
+ - halilhanbadem[at]gmail[dot].com
+
