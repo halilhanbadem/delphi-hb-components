@@ -1,0 +1,50 @@
+package hbComponentSet;
+
+{$R *.res}
+{$R 'hbOAuth.dcr'}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vcl,
+  IndySystem,
+  IndyProtocols,
+  IndyCore,
+  designide;
+
+contains
+  hbOAuth in 'hbOAuth.pas',
+  hbGoogle in 'hbGoogle.pas',
+  hbMailSender in 'hbMailSender.pas',
+  Google.JWT in 'Request\Google.JWT.pas',
+  Google.Request in 'Request\Google.Request.pas',
+  JOSE.Encoding.Base64 in 'Sign\JOSE.Encoding.Base64.pas',
+  JOSE.Signing.RSA in 'Sign\JOSE.Signing.RSA.pas',
+  JOSE.Types.Bytes in 'Sign\JOSE.Types.Bytes.pas',
+  uSplash in 'uSplash.pas';
+
+end.
