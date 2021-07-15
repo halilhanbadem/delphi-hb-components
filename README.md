@@ -55,12 +55,78 @@ begin
  end;
 end;
 ```
-
 P.S: The usage area of ​​this component is quite wide. I did my tests in the OAuth system for the API in Wordpress's Woocommerce plugin.
-
+P.S: I know about "OAuth1Authenticator", but it is designed for those who think like me and want to use Delphi's ready-made REST Client components.
 
 ## hbGoogle ![google](https://user-images.githubusercontent.com/17130294/125825176-68acceb8-c38d-4c7b-9d15-69a7896c3898.png)
+hbGoogle is the component that allows you to use the Google Speech to Text API using Google Cloud technologies. [Those who want to have this component other than the set can visit this link.](https://github.com/halilhanbadem/delphi-google-speech-to-text)  Its main purpose is to send commands with voice and to process this command in your projects. In the example of this project, a specific file is processed. If you wish, you can record and process instant audio with 3rd party components.
 
+## Requirements
+ * Indy Components
+ * ssleay32.dll and libeay32.dll
+
+## Usage
+ * Add one hbGoogle component to your project.
+ * Add a button and come to the onclick event.
+ * for hbGoogle; Define the PrivateKeyFile property value, the path to the json file we downloaded from Google.
+ * For the VoiceFile property value, define the path to the sound file. Remember; The file should have wav extension and 16000hz.
+ * If the audio file is not suitable, it will give you an error.
+ * The SpeechLanguage value is for the language. Indicates which language the sound belongs to.
+ * Very long files can be stuck at Google limits when converting to base64 format. For this, with the CloudStorage structure that I will consider in the future, I can first send the voices to the cloud and then convert them by giving uri.
+
+Sample code:
+
+```
+hbGoogle1.SpeechLanguage := 'tr-TR';
+hbGoogle1.PrivateKeyFile := 'delphisestenyazi.json';
+hbGoogle1.VoiceFile := 'temp.wav';
+ShowMessage(hbGoogle1.SpeechToText); 
+```
+
+That's it! The return will come back to you in writing.
+
+## Some Warnings
+
+ * Please make sure that the sound recording is 16000hz and its original wav extension. You can use FFMpeg.
+ * Excessive or incorrect use may have occurred in the codes. I will fix these issues over time.. Since I am making open source codes as a hobby; I can be interested in my work whenever I find time.
+ * Please create an issue for your problems.
+ * It only supports VCL.
+ * Developed and tested with Delphi 10.4.2.
 
 ## hbMailSender ![mail](https://user-images.githubusercontent.com/17130294/125825452-983cdc44-ad8f-487f-87d6-1a3e679d19b7.png)
+hbMailSender comes from HHB Mail Component. [For that you can visit this link.](https://github.com/halilhanbadem/HHBMailComponent_Source) One of the biggest innovations is the ability to send HTML-based mails easily. You can use it without any problems, especially when sending a newsletter. In addition to having many features such as adding files, the code snippets that cause the MemoryLeak error have been corrected in this version. It uses Indy components.
 
+_Update List_
+
+**V1.1**
+
+* Added "ConnectionTimeOut" to property section.
+* Added file sending feature.
+* ContentType, ContentID attributes added.
+* By default, CharSet is set to "UTF-8".
+
+
+**V1.2**
+
+* Added ability to send mail to multiple users. [Click here for detailed usage.](https://github.com/halilhanbadem/HHBMailComponent_Source/issues/1)
+* Added ability to send multiple files. [Click here for detailed usage.](https://github.com/halilhanbadem/HHBMailComponent_Source/issues/2)
+* Bug fixed.
+
+**V1.3**
+
+* Bug fixed.
+
+**V1.4**
+
+* Removed the HTML requirement for whitespace adjustment.
+* Version information was added to the properties section.
+
+**V1.5**
+
+* Added UniGUI support.
+
+**V1.0 - hbcomponentset**
+
+* Fixed MemoryLeak Error.
+* Fixed some issues for HTML-based submissions.
+* Minor code changes have been made.
