@@ -58,6 +58,10 @@ end;
 P.S: The usage area of ​​this component is quite wide. I did my tests in the OAuth system for the API in Wordpress's Woocommerce plugin.
 P.S: I know about "OAuth1Authenticator", but it is designed for those who think like me and want to use Delphi's ready-made REST Client components.
 
+### Resources
+ - https://www.rfc-editor.org/rfc/rfc5849.html#section-3.4.1
+ - https://oauth.net/core/1.0a/#RFC2045
+
 ## hbGoogle ![google](https://user-images.githubusercontent.com/17130294/125825176-68acceb8-c38d-4c7b-9d15-69a7896c3898.png)
 hbGoogle is the component that allows you to use the Google Speech to Text API using Google Cloud technologies. [Those who want to have this component other than the set can visit this link.](https://github.com/halilhanbadem/delphi-google-speech-to-text)  Its main purpose is to send commands with voice and to process this command in your projects. In the example of this project, a specific file is processed. If you wish, you can record and process instant audio with 3rd party components.
 
