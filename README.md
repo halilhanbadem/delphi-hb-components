@@ -56,7 +56,7 @@ begin
 end;
 ```
 P.S: The usage area of ​​this component is quite wide. I did my tests in the OAuth system for the API in Wordpress's Woocommerce plugin.
-P.S: I know about "OAuth1Authenticator", but it is designed for those who think like me and want to use Delphi's ready-made REST Client components.
+P.S: I know about "OAuth1Authenticator", but it is designed for those who think like me and do not want to use Delphi's ready-made REST Client components.
 
 ### Resources
  - https://www.rfc-editor.org/rfc/rfc5849.html#section-3.4.1
