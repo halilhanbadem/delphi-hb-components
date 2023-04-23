@@ -11,7 +11,7 @@ These components include the classes that I have prepared for my needs. There ar
 
 hbOAuth is a signature generation component. With this component, you can create your signature in accordance with the OAuth 1.0 system. It can create your signature according to HMAC_SHA1 and HMAC_SHA256 types. In addition, completely native classes and components are used. 
 
-### Propertys
+### Properties
  -  **`AutoGenerateNonce`**: It automatically generates the value for the "Nonce" parameter. If true, even if you set it, it will take the value it created.
  -  **`AutoGenerateTimeStamp`**: It automatically generates the value for the "TimeStamp" parameter. If true, even if you set it, it will take the value it created.
  -  **`Host`**: The request asks for the host information you will send. Thus, it is required for Base Plain Text.
