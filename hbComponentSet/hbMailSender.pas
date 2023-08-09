@@ -183,7 +183,7 @@ begin
    EMailComponent.Recipients.Add.Name :=  FClientMailName;
    EMailComponent.Recipients.EMailAddresses := FClientMailAddress;
    EMailComponent.Subject := FMailSubject;
-   EMailComponent.ContentType := 'text/html';
+   EMailComponent.ContentType := 'multipart/mixed';
    EMailComponent.CharSet := 'utf-8';
 
    if Trim(FAttachFiles.Text) <> '' then
