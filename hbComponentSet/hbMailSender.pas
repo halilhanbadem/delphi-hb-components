@@ -40,6 +40,7 @@ type
      FMailReplyToAddress: String;
      FSMTPName: String;
      FContentID: String;
+     FContentType: String;
      FMailContent: TStringList;
      FAttachFiles: TStringList;
      FAttachFilesType: TStringList;
@@ -50,13 +51,14 @@ type
      SMTPComponent: TIdSMTP;
      EMailComponent: TIdMessage;
      LHandlerComponent: TIdSSLIOHandlerSocketOpenSSL;
-     Procedure WLines(Value: TStringList);
-     Procedure WAttachFiles(Value: TStringList);
-     Procedure WAttachFilesType(Value: TStringList);
-     Procedure WAttachFilesID(Value: TStringList);
+     procedure WLines(Value: TStringList);
+     procedure WAttachFiles(Value: TStringList);
+     procedure WAttachFilesType(Value: TStringList);
+     procedure WAttachFilesID(Value: TStringList);
    public
-     Procedure Connect;
-     Procedure SendMail;
+     procedure Connect;
+     procedure Disconnect;
+     procedure SendMail;
      property AttachFiles: TStringList read FAttachFiles write WAttachFiles;
      property AttachFilesType: TStringList read FAttachFilesType write WAttachFilesType;
      property AttachFilesID: TStringList read FAttachFilesID write WAttachFilesID;
@@ -78,6 +80,7 @@ type
     property AttachFile: string read FAttachFileName write FAttachFileName;
     property AttachType: string read FAttachType write FAttachType;
     property AttachFileContentID: string read FContentID write FContentID;
+    property ContentType: string read FContentType write FContentType;
  End;
     Procedure Register;
 
@@ -119,6 +122,13 @@ begin
   inherited ;
 end;
 
+procedure ThbMailSender.Disconnect;
+begin
+ LHandlerComponent.CloseGracefully;
+ SMTPComponent.Socket.Close;
+ SMTPComponent.Disconnect;
+end;
+
 Procedure ThbMailSender.WLines(Value: TStringList);
 begin
   FMailContent.Assign(Value);
@@ -143,8 +153,8 @@ end;
 
 Procedure ThbMailSender.Connect;
 begin
-   if SMTPComponent.Connected then SMTPComponent.Disconnect();
-
+  if not SMTPComponent.Connected then
+  begin
    SMTPComponent.Host := FSMTPHost;
    SMTPComponent.AuthType := satDefault;
    SMTPComponent.Username := FSMTPMailAddress;
@@ -164,8 +174,8 @@ begin
    SMTPComponent.UseTLS := utUseExplicitTLS;
    SMTPComponent.ConnectTimeout := FConnectTimeOut;
 
-
    SMTPComponent.Connect;
+  end;
  end;
 
 
@@ -183,7 +193,7 @@ begin
    EMailComponent.Recipients.Add.Name :=  FClientMailName;
    EMailComponent.Recipients.EMailAddresses := FClientMailAddress;
    EMailComponent.Subject := FMailSubject;
-   EMailComponent.ContentType := 'multipart/mixed';
+   EMailComponent.ContentType := FContentType;
    EMailComponent.CharSet := 'utf-8';
 
    if Trim(FAttachFiles.Text) <> '' then
