@@ -218,7 +218,7 @@ begin
                ContentType := FAttachFilesType.Strings[I];
                ContentID := FAttachFilesID.Strings[I];
                DisplayName := ExtractFileName(FAttachFiles.Strings[I]);
-               FileName := ExtractFilePath(FAttachFiles.Strings[I]);
+               FileName := ExtractFileName(FAttachFiles.Strings[I]);
              end;
            end;
          end;
